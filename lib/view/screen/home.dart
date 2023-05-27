@@ -1,10 +1,7 @@
-import 'package:fexercise/essential/constants/global_constants.dart';
+import 'package:fexercise/controller/multiscreen_controller.dart';
 import 'package:fexercise/essential/constants/image_use.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-
 import '../../essential/shared/container.dart';
 
 class Home extends StatelessWidget{
@@ -12,90 +9,48 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 20,
-              color: Colors.black.withOpacity(.1),
-            )
-          ],
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-            child: GNav(
-              rippleColor: Colors.grey[300]!,
-              hoverColor: Colors.grey[300]!,
-              gap: 8,
-              activeColor: Colors.black,
-              iconSize: 24,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              duration: Duration(milliseconds: 400),
-              tabBackgroundColor: Colors.grey[300]!,
-              color: Colors.black,
-              tabs: const [
-                GButton(
-                  icon: Icons.home_outlined,
-                  text: 'Home',
-                ),
-                GButton(
-                  icon: Icons.lunch_dining_outlined,
-                  text: 'Calories',
-                ),
-                GButton(
-                  icon: Icons.person_outline_rounded,
-                  text: 'Profile',
-                ),
-                GButton(
-                  icon: Icons.settings_outlined,
-                  text: 'Settings',
-                ),
-      ],
-      ),
+    MultiScreenControllerImp controller = Get.put(MultiScreenControllerImp());
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        children: <Widget>[
+          HomeContainer(
+            image: ImageUse.calories,
+            title: "Calories",
+            text: "Track your calories and keep\nup with your daily goal!",
+            color: Color(0XFFef476f),
+            onTap: () {
+              controller.goToFoodList();
+              },
           ),
-        ),
-      ),
-      appBar: AppBar(
-        title: const Text("HOME PAGE"),
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.black),
-        centerTitle: true,
-        titleTextStyle: const TextStyle(
-          color: Color(0XFF8B8B8B),
-          fontSize: 30,
+          HomeContainer(
+            image: ImageUse.exercises,
+            title: "Exercises",
+            text: "Train different parts of your\nbody to achieve your dream\nphysique",
+            color: Color(0XFFffd166),
+            onTap: () {
+              controller.goToExercise();
+              },
           ),
-        ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: const <Widget>[
-            HomeContainer(
-              image: ImageUse.calories,
-              title: "Calories",
-              text: "Track your calories and keep\nup with your daily goal!",
-            ),
-            HomeContainer(
-              image: ImageUse.exercises,
-              title: "Exercises",
-              text: "Train different parts of your\nbody to achieve your dream\nphysique",
-            ),
-            HomeContainer(
-              image: ImageUse.posts,
-              title: "Posts",
-              text: "Join the online community\nand read our new posts.",
-            ),
-            HomeContainer(
-              image: ImageUse.diets,
-              title: "Diet",
-              text: "Track what you eat",
-            ),
-          ],
-        ),
+          HomeContainer(
+            image: ImageUse.posts,
+            title: "Feed",
+            text: "Join the online community\nand read our new posts.",
+            color: Color(0XFF06d6a0),
+            onTap: () {
+              controller.goToCalories();
+              },
+          ),
+          HomeContainer(
+            image: ImageUse.diets,
+            title: "Diet",
+            text: "Track what you eat",
+            color: Color(0XFF118ab2),
+            onTap: () {
+              controller.goToFoodList();
+              },
+          ),
+        ],
       ),
     );
   }

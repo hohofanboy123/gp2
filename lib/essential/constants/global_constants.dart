@@ -6,8 +6,11 @@ const blue1     = Color(0xFF5A7E9D);//5A7E9D
 const blue2     = Color(0xFF2F4E6C);
 const blue3     = Color(0xFF193452);
 
-const gradientColor = RadialGradient(
-  colors: [Color(0xFFD1536A),Color(0xFFEE7575)],
+const gradientColor = LinearGradient(
+  colors: [Color(0xFFEE7575), Color(0xFFD1536A)],
+);
+const gradientColor2 = LinearGradient(
+  colors: [Color(0xFFD1536A), Color(0xFFD1536A)],
 );
 
 const textColor = Color(0xFF000000);

@@ -13,10 +13,10 @@ class DataViewHandle extends StatelessWidget {
   Widget build(BuildContext context) {
     return 
 
-      statusRequest == StatusRequest.loading            ? Center(child: Lottie.asset(ImageUse.loading, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),)
-    : statusRequest == StatusRequest.connectionFailure  ? Center(child: Lottie.asset(ImageUse.noInternet, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),) 
-    : statusRequest == StatusRequest.serverFailure      ? Center(child: Lottie.asset(ImageUse.serverError, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),) 
-    : statusRequest == StatusRequest.taskFailure        ? Center(child: Lottie.asset(ImageUse.noData, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),) 
+      statusRequest == StatusRequest.loading            ? Container(color: Colors.white, child: Center(child: Lottie.asset(ImageUse.loading, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),))
+    : statusRequest == StatusRequest.connectionFailure  ? Container(color: Colors.white, child: Center(child: Lottie.asset(ImageUse.noInternet, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),)) 
+    : statusRequest == StatusRequest.serverFailure      ? Container(color: Colors.white, child: Center(child: Lottie.asset(ImageUse.serverError, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),)) 
+    : statusRequest == StatusRequest.taskFailure        ? Container(color: Colors.white, child: Center(child: Lottie.asset(ImageUse.noData, width: Get.width * (500 / 375.0), height: Get.height * (500 / 812.0),),)) 
     : widget;
   }
 }

@@ -1,8 +1,6 @@
-import 'package:fexercise/link_api.dart';
 
-import '../../../essential/classes/crud.dart';
 
-class TestData{
+/*class TestData{
   Crud crud;
 
   TestData(this.crud);
@@ -11,4 +9,4 @@ class TestData{
     var response = await crud.postData(ApiLinks.test, {});
     return response.fold((l) => l, (r) => r);
   }
-}
+}*/

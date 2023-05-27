@@ -1,7 +1,6 @@
 import 'package:fexercise/controller/auth_controller/sign_in_controller.dart';
 import 'package:fexercise/essential/classes/data_view_handle.dart';
 import 'package:fexercise/essential/constants/image_use.dart';
-import 'package:fexercise/essential/functions/handling_data_controller.dart';
 import 'package:fexercise/essential/functions/validation.dart';
 import 'package:fexercise/essential/shared/custom_inkwell.dart';
 import 'package:fexercise/essential/shared/custom_text_field.dart';
@@ -9,7 +8,6 @@ import 'package:fexercise/view/screen/auth/auth_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../essential/classes/status_request.dart';
 import '../../../essential/constants/global_constants.dart';
 
 class SignIn extends StatelessWidget{

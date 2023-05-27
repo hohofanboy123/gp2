@@ -41,6 +41,7 @@ class VerifyOtpCodeControllerImp extends VerifyOtpCodeController {
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success")
         {
+          Get.defaultDialog(title: "OOPS", middleText: " CODE");
           Get.offNamed(AppRoute.accountCreated);
         }
         else

@@ -1,6 +1,5 @@
 import 'package:fexercise/essential/classes/status_request.dart';
 import 'package:fexercise/essential/constants/image_use.dart';
-import 'package:fexercise/essential/constants/route_name.dart';
 import 'package:fexercise/essential/shared/custom_text_field.dart';
 import 'package:fexercise/view/screen/auth/auth_button.dart';
 import 'package:flutter/material.dart';

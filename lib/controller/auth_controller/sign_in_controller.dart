@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../data/datasource/remote/auth/sign_in_data.dart';
 import '../../essential/classes/status_request.dart';
 import '../../essential/functions/handling_data_controller.dart';
+import '../../essential/getxservices/services.dart';
 
 abstract class SignInController extends GetxController {
 
@@ -20,7 +21,8 @@ class SignInControllerImp extends SignInController {
   late TextEditingController email;
   late TextEditingController password;
 
-  
+  Services services = Get.find();
+
   bool showPass = true;
 
   void showPassword(){
@@ -43,7 +45,13 @@ class SignInControllerImp extends SignInController {
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success")
         {
-          Get.offNamed(AppRoute.home);
+          services.sharedPreferences.setInt("id", response['data']['user_id']);
+          services.sharedPreferences.setString("fname", response['data']['fname']);
+          services.sharedPreferences.setString("lname", response['data']['lname']);
+          services.sharedPreferences.setString("email", response['data']['email']);
+          services.sharedPreferences.setString("gender", response['data']['gender'].toString());
+          print(services.sharedPreferences.getString("gender"));
+          Get.offNamed(AppRoute.multiscreen);
         }
         else
         {
