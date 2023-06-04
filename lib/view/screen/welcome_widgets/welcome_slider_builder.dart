@@ -29,12 +29,12 @@ class WelcomeSliderBuilder extends GetView<WelcomeControllerImp> {
             ),
           ),
             
-          SizedBox(height: Get.height * (10 / 812.0),),
+          SizedBox(height: Get.height * (50 / 812.0),),
             
           Image.asset(
             welcomeModelList[i].image!,
-            height: Get.height * (300 / 812.0),
-            width: Get.width * (300 / 375.0),
+            height: Get.height * (250 / 812.0),
+            width: Get.width * (250 / 375.0),
             fit: BoxFit.fill,
           ),
 

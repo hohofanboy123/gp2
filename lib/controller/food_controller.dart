@@ -12,6 +12,7 @@ abstract class FoodController extends GetxController{
 
 getFoodData();
 goToFoodDetail(FoodModel foodModel);
+searchData();
 
 }
 
@@ -19,11 +20,16 @@ class FoodControllerImp extends FoodController{
 
 FoodData foodData = FoodData(Get.find());
 List food = [];
+List<FoodModel> searchFood = [];
+bool isSearch = false;
+
+TextEditingController? search;
 
 late StatusRequest statusRequest;
 
 @override
   void onInit() {
+    search = TextEditingController();
     getFoodData();
     super.onInit();
   }
@@ -46,6 +52,26 @@ getFoodData() async {
       }
       update();
   }
+
+  @override
+  searchData() async {
+    statusRequest = StatusRequest.loading;
+      var response = await foodData.searchData(search!.text);
+      statusRequest = handlingData(response);
+      if(StatusRequest.success == statusRequest){
+        if(response['status'] == "success")
+        {
+          List responsedata = response['data'];
+          searchFood.addAll(responsedata.map((e) => FoodModel.fromJson(e)));
+        }
+        else
+        {
+          Get.defaultDialog(title: "OOPS", middleText: "INCORRECT EMAIL OR PASSWORD");
+          statusRequest = StatusRequest.taskFailure;
+        }
+      }
+      update();
+  }
   
   @override
   goToFoodDetail(foodModel) {
@@ -53,5 +79,22 @@ getFoodData() async {
       "foodModel": foodModel
     });
   } 
+
+
+  checkSearch(val){
+    if(val == ""){
+      isSearch = false;
+      food.clear();
+      getFoodData();
+    }
+    update();
+  }
+
+  onSearch(){
+    searchFood.clear();
+    isSearch = true;
+    searchData();
+    update();
+  }
 
 }

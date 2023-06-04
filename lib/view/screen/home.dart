@@ -18,7 +18,7 @@ class Home extends StatelessWidget{
             image: ImageUse.calories,
             title: "Calories",
             text: "Track your calories and keep\nup with your daily goal!",
-            color: Color(0XFFef476f),
+            color: Color(0XFF769AB8),
             onTap: () {
               controller.goToFoodList();
               },
@@ -27,27 +27,27 @@ class Home extends StatelessWidget{
             image: ImageUse.exercises,
             title: "Exercises",
             text: "Train different parts of your\nbody to achieve your dream\nphysique",
-            color: Color(0XFFffd166),
+            color: Color(0XFFE87E91),
             onTap: () {
               controller.goToExercise();
+              },
+          ),
+          HomeContainer(
+            image: ImageUse.diets,
+            title: "Nutrition",
+            text: "Track what you eat",
+            color: Color(0XFFF3CCA2),
+            onTap: () {
+              controller.goToFoodList();
               },
           ),
           HomeContainer(
             image: ImageUse.posts,
             title: "Feed",
             text: "Join the online community\nand read our new posts.",
-            color: Color(0XFF06d6a0),
+            color: Color(0XFF9FBB9B),
             onTap: () {
               controller.goToCalories();
-              },
-          ),
-          HomeContainer(
-            image: ImageUse.diets,
-            title: "Diet",
-            text: "Track what you eat",
-            color: Color(0XFF118ab2),
-            onTap: () {
-              controller.goToFoodList();
               },
           ),
         ],

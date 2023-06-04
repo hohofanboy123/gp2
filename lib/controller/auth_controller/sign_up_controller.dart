@@ -57,10 +57,6 @@ class SignUpControllerImp extends SignInController {
       }
       update();
     }
-    else
-    {
-      
-    }
   }
 
   @override

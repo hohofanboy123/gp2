@@ -13,6 +13,7 @@ class Test extends StatelessWidget {
       body: Center(
         child: Lottie.asset(
           ImageUse.loading,
+          height: 100
         )
       ),
     );

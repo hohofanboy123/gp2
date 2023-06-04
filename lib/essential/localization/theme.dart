@@ -7,7 +7,7 @@ ThemeData englishTheme = ThemeData(
         fontFamily: "Roboto",
         textTheme: const TextTheme(
           displayLarge: TextStyle(
-            fontSize: 35,
+            fontSize: 30,
             color: orange,
           ),
           bodyLarge: TextStyle(
@@ -20,7 +20,7 @@ ThemeData arabicTheme = ThemeData(
         fontFamily: "Tajawal",
         textTheme: const TextTheme(
           displayLarge: TextStyle(
-            fontSize: 35,
+            fontSize: 30,
             color: orange,
           ),
           bodyLarge: TextStyle(

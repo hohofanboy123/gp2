@@ -18,4 +18,8 @@ class AppRoute{
   static const String foodList                     = "/food/food_view.dart";
   static const String foodDetail                   = "/food/food_detail.dart";
   static const String bodyAnthropometry            = "/calories/body_anthropometry.dart";
+
+  static const String dailyInfo                    = "/calories/daily_info.dart";
+
+  static const String bowl                         = "/bowl/bowl_view.dart";
 }

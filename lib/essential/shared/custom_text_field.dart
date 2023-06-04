@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 //General text field
@@ -143,6 +144,53 @@ class CustomPasswordTextField extends StatelessWidget{
               ),
             ),
           );
+  }
+  
+}
+
+//email custom textfield
+class SearchCustomTextField extends StatelessWidget{
+  final String labelTxt;
+  final String hintTxt;
+  final TextEditingController? cont;
+  final void Function(String)? onChanged;
+  final void Function()? onPressed;
+
+  const SearchCustomTextField({
+    super.key,
+    required this.labelTxt,
+    required this.hintTxt,
+    this.cont,
+    this.onChanged,
+    this.onPressed
+    });
+  
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      onChanged: onChanged,
+              //validator: validation,
+              controller: cont,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                prefixIcon: IconButton(
+                  onPressed: onPressed,
+                  icon: Icon(Icons.search)
+                ),
+                labelText: labelTxt,
+                hintText: hintTxt,
+                hintStyle: const TextStyle(
+                  fontSize: 12,
+                ),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 15,
+                ),
+              ),
+            );
   }
   
 }

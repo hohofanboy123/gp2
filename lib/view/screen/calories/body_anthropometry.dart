@@ -1,5 +1,8 @@
 import 'package:fexercise/view/screen/calories/gender_picker.dart';
+import 'package:fexercise/view/widget/allergy_illness_select.dart';
 import 'package:fexercise/view/widget/calories_nutrients_progress.dart';
+import 'package:fexercise/view/widget/divider.dart';
+import 'package:fexercise/view/widget/goal_container.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -11,7 +14,6 @@ import '../../widget/activity_container.dart';
 
 class BodyAnthropometry extends StatelessWidget {
   const BodyAnthropometry({super.key});
-
   @override
   Widget build(BuildContext context) {
     ColoriesControllerImp controller = Get.put(ColoriesControllerImp());
@@ -24,46 +26,30 @@ class BodyAnthropometry extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     child: Column(
                             children: [
-                              Text("Please choose your goal", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-                              Row(
+                              SizedBox(height: 50,),
+                              const CustomDivider(text: "Your goal"),
+                              const Row( 
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(vertical: 5),
-            height: 50,
-            width: Get.width/3.5,
-            decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.grey)
-          ),
-          child: Center(child: Text("Gain weight")),
+                                children : [
+                                  GoalContainer(
+                                    text: "Gain Weight",
+                                    index: 1,
                                   ),
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(vertical: 5),
-            height: 50,
-            width: Get.width/3.5,
-            decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.grey)
-          ),
-          child: Center(child: Text("Maintain your weight", textAlign: TextAlign.center,) ),
+                                  GoalContainer(
+                                    text: "Maintain Weight",
+                                    index: 2,
                                   ),
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(vertical: 5),
-            height: 50,
-            width: Get.width/3.5,
-            decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.grey)
-          ),
-          child: Center(child: Text("Lose weight")),
-                                  )
+                                  GoalContainer(
+                                    text: "Lose Weight",
+                                    index: 3,
+                                  ),
                                 ],
                               ),
-                              Text("Please choose your body Anthropometry", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-                              Row(
+                              SizedBox(height: 20,),
+                              const CustomDivider(text: "Body Anthropometry"),
+                              const Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   GenderPicker(
                     icon: FaIcon(FontAwesomeIcons.mars, color: Colors.blue, size: 60,),
                     gender: "Male",
@@ -77,7 +63,7 @@ class BodyAnthropometry extends StatelessWidget {
                                 ],
                               ),
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 7.5),
+                                margin: const EdgeInsets.symmetric(vertical: 7.5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
                                   border: Border.all(
@@ -86,7 +72,7 @@ class BodyAnthropometry extends StatelessWidget {
                                 ),
                                 child: Column(
                                   children: [
-                    Text(
+                    const Text(
                           "Height (in cm)",
                         ),
                     NumberPicker(
@@ -132,7 +118,7 @@ class BodyAnthropometry extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
+                        const Text(
                       "Weight (in kg)",
                     ),
                     Container(
@@ -193,7 +179,7 @@ class BodyAnthropometry extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
+                          const Text(
                             'Age',
                             style: TextStyle(fontSize: 16),
                           ),
@@ -211,7 +197,7 @@ class BodyAnthropometry extends StatelessWidget {
                                   child: Center(
                     child: IconButton(
                       onPressed: () {controller.ageDec();},
-                      icon: Icon(Icons.remove, color: Colors.red,),
+                      icon: const Icon(Icons.remove, color: Colors.red,),
                       iconSize: 25,
                       ),
                                   ),
@@ -231,7 +217,7 @@ class BodyAnthropometry extends StatelessWidget {
                                   child: Center(
                     child: IconButton(
                       onPressed: () {controller.ageInc();},
-                      icon: Icon(Icons.add, color: Colors.green,),
+                      icon: const Icon(Icons.add, color: Colors.green,),
                       iconSize: 25,
                       ),
                                   ),
@@ -243,8 +229,8 @@ class BodyAnthropometry extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 20,),
-                              Text("Please choose your daily activity level", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                              const SizedBox(height: 20,),
+                              const CustomDivider(text: "Daily activity level"),
                               const ActivityContainer(
                                 text: "Sedentary (little to no exercise)",
                                 index: 1,
@@ -265,12 +251,40 @@ class BodyAnthropometry extends StatelessWidget {
                                 text: "Extra active (very hard exercise or a physically demanding job)",
                                 index: 5,
                               ),
+                              SizedBox(height: 20,),
+                              CustomDivider(text: "Allergy & Illness"),
+                              const Wrap(
+                                alignment: WrapAlignment.center,
+                                spacing: 20,
+                                children : [
+                              AllergyContainer(
+                                text: "Type 2 Diabetes",
+                                index: 1,
+                              ),
+                              AllergyContainer(
+                                text: "Hypertension",
+                                index: 2,
+                              ),
+                              AllergyContainer(
+                                text: "Celiac Disease",
+                                index: 3,
+                              ),
+                              AllergyContainer(
+                                text: "Wheat Allergy",
+                                index: 4,
+                              ),
+                              AllergyContainer(
+                                text: "Milk Allergy",
+                                index: 5,
+                              ),
+                                ],
+                              ),
                               ElevatedButton(
                                 onPressed: () {
                                   controller.updateData();
                                 },
                                  child: Text('Get Weight and Height'),
-)
+),
                             ],
                           ),
                   ),

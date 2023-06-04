@@ -1,4 +1,6 @@
 import 'package:fexercise/data/datasource/remote/body_data.dart';
+import 'package:fexercise/view/screen/calories/daily_info.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../essential/classes/status_request.dart';
@@ -12,10 +14,12 @@ abstract class ColoriesController extends GetxController {
   setWeight(int weightValue);
   ageInc();
   ageDec();
-  activitySelection(int index);
+  activitySelection(int indexActivity);
+  goalSelection(int indexGoal);
   updateData();
 
 }
+
 
 class ColoriesControllerImp extends ColoriesController {
 
@@ -24,6 +28,7 @@ class ColoriesControllerImp extends ColoriesController {
   late StatusRequest statusRequest;
   BodyData bodyData = BodyData(Get.find());
   var isMaleSelected = false.obs;
+  RxInt selectedGoal = RxInt(-1);
   RxInt selectedActivity = RxInt(-1);
   RxInt height = 120.obs;
   RxInt weight = 30.obs;
@@ -60,8 +65,14 @@ class ColoriesControllerImp extends ColoriesController {
   }
   
   @override
-  activitySelection(index) {
-    selectedActivity.value = index;
+  activitySelection(indexActivity) {
+    selectedActivity.value = indexActivity;
+    update();
+  }
+
+  @override
+  goalSelection(indexGoal) {
+    selectedGoal.value = indexGoal;
     update();
   }
   
@@ -69,11 +80,22 @@ class ColoriesControllerImp extends ColoriesController {
   updateData() async{
     statusRequest = StatusRequest.loading;
     gender = isMaleSelected.value == true ? "male" : "female";
-      var response = await bodyData.postData(id!.toString(), gender!, weight.toString(), height.toString(), age.toString(), selectedActivity.toString());
+      var response = await bodyData.postData(
+        id!.toString(),
+        gender!,
+        weight.toString(),
+        height.toString(),
+        age.toString(),
+        selectedActivity.toString(),
+        selectedGoal.toString()
+      );
+      print(response);
       statusRequest = handlingData(response);
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success")
         {
+          insertAllergy();
+          Get.to(const DailyInfo());
           Get.defaultDialog(title: "UPDATED", middleText: "GG");
         }
         else
@@ -83,7 +105,33 @@ class ColoriesControllerImp extends ColoriesController {
         }
       }
   }
-  
+
+  RxList<int> selectedAllergies = <int>[].obs;
+
+
+void toggleSelectedAllergy(int index) {
+  if (isSelectedAllergy(index)) {
+    selectedAllergies.removeWhere((item) => item == index);
+  } else {
+    selectedAllergies.add(index);
+  }
+}
+
+bool isSelectedAllergy(int index) {
+  return selectedAllergies.contains(index);
+}
+
+insertAllergy()
+{
+  for(var index in selectedAllergies) {
+      bodyData.insertAllergy(
+        id!.toString(),
+        index.toString()
+      );
+    }
+}
+
+
   @override
   void onInit() {
     id = services.sharedPreferences.getInt("id");

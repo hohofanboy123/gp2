@@ -49,7 +49,7 @@ class Translate extends Translations{
       "1"  : "Choose your preferred language",
       "2"  : "Arabic",
       "3"  : "English",
-      "4"  : "Welcome",
+      "4"  : "Welcome!",
       "5"  : "Build a healthy\nlifestyle.",
       "6"  : "Track what you eat",
       "7"  : "Food",

@@ -50,7 +50,6 @@ class SignInControllerImp extends SignInController {
           services.sharedPreferences.setString("lname", response['data']['lname']);
           services.sharedPreferences.setString("email", response['data']['email']);
           services.sharedPreferences.setString("gender", response['data']['gender'].toString());
-          print(services.sharedPreferences.getString("gender"));
           Get.offNamed(AppRoute.multiscreen);
         }
         else

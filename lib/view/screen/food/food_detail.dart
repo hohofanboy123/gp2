@@ -12,6 +12,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../../controller/food_detail_controller.dart';
 import '../../../link_api.dart';
+import 'food_risk_indicator.dart';
 
 class FoodDetail extends StatelessWidget {
   const FoodDetail({super.key});
@@ -24,13 +25,6 @@ class FoodDetail extends StatelessWidget {
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
-          Container(
-            height: 200,
-            decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
-            //color: blue2,
-            ),
-          ),
           Positioned(
             top: - Get.width * 0.5,
             child: Opacity(
@@ -41,6 +35,31 @@ class FoodDetail extends StatelessWidget {
                     fit: BoxFit.cover,
               ),
             )
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                width: Get.width / 4,
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: blue2,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        controller.goToBowl();
+                      },
+                      icon: FaIcon(FontAwesomeIcons.bowlFood, size: 25, color: Colors.white,)
+                      ),
+                      Text("Bowl", style: TextStyle(color: Colors.white, fontSize: 15),),
+                  ],
+                )
+                ),
+            ),
           ),
           Positioned(
             top: 100,
@@ -130,6 +149,7 @@ class FoodDetail extends StatelessWidget {
                                   ),
                               bgColor: Colors.orange.withOpacity(0.5),
                               ),
+                              RiskIndicator(),
                               Text("Enter amount in grams" , style: TextStyle(fontSize: 15),),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -138,6 +158,7 @@ class FoodDetail extends StatelessWidget {
                                     height: 40,
                                     width: 150,
                                     child: TextField(
+                                      controller: controller.quantity,
                                       keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         contentPadding: const EdgeInsets.symmetric(
@@ -158,7 +179,9 @@ class FoodDetail extends StatelessWidget {
                                     height: 40,
                                     width: 150,
                                     child: ElevatedButton(
-                                      onPressed: (){},
+                                      onPressed: (){
+                                        controller.addToBowl();
+                                      },
                                       child: Text("Add to bowl"),
                                       style: ButtonStyle(
                                             backgroundColor: MaterialStateProperty.all<Color>(orange),

@@ -65,7 +65,7 @@ class MultiScreen extends StatelessWidget{
                   text: 'Home',
                 ),
                 GButton(
-                  icon: Icons.lunch_dining_outlined,
+                  icon: Icons.favorite,
                   text: 'Calories',
                 ),
                 GButton(

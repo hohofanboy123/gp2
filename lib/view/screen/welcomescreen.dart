@@ -1,3 +1,5 @@
+import 'package:fexercise/essential/constants/global_constants.dart';
+import 'package:fexercise/view/screen/welcome_widgets/gradient_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,17 +29,22 @@ class WelcomeScreen extends StatelessWidget{
                 children: [
                   const DotBuilder(),
                   SizedBox(height: Get.height * (20 / 375.0)),
-                  CustomButton(
-                    text: "12".tr,
-                    press: (){
-                      controller.goToSignIn();
-                    },
+                  RaisedGradientButton(
+                    child: Text("Sign in", style: TextStyle(
+            fontSize: Get.width * (20 / 375.0),//SizeConfig.scrnWidth! * (25 / 375.0),
+            color: Colors.white,
+          ),),
+                    gradient: gradientColor,
+                    onPressed: (){}
                   ),
-                  CustomButton(
-                    text: "13".tr,
-                    press: (){
-                      controller.goToSignUp();
-                    },
+                  SizedBox(height: Get.height * (5 / 375.0)),
+                  RaisedGradientButton(
+                    child: Text("Sign up", style: TextStyle(
+            fontSize: Get.width * (20 / 375.0),//SizeConfig.scrnWidth! * (25 / 375.0),
+            color: Colors.white,
+          ),),
+                    gradient: gradientColor,
+                    onPressed: (){}
                   ),
                   const Spacer(flex: 1,),
                 ],
