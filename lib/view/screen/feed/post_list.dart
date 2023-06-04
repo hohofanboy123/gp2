@@ -1,4 +1,3 @@
-import 'package:fexercise/data/model/food_model.dart';
 import 'package:fexercise/data/model/posts_model.dart';
 import 'package:fexercise/essential/constants/global_constants.dart';
 import 'package:fexercise/view/screen/welcome_widgets/custom_button.dart';
@@ -8,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../controller/feed/posts_controller.dart';
-import 'comment_list.dart';
 
 class PostList extends GetView<PostsControllerImp> {
   const PostList({Key? key}) : super(key: key);
@@ -92,16 +90,16 @@ class Posts extends GetView<PostsControllerImp> {
             : textColor
             ),
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(postsModel.postTime!)),
           ),
       ],
     ),
-    SizedBox(height: 15,),
+    const SizedBox(height: 15,),
     Expanded(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Text(
           "${postsModel.postContent}",
           style: const TextStyle(fontSize: 15),

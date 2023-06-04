@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/categories_controller.dart';
 import '../../../data/model/categories_model.dart';
+import '../../../essential/functions/db_translation.dart';
 import '../../../link_api.dart';
 
 class ExerciseType extends GetView<CategoriesControllerImp> {
@@ -70,7 +71,7 @@ class Categories extends GetView<CategoriesControllerImp> {
                 ),
           ),
           Text(
-            "${categoriesModel.categoryNameEn}",
+            "${translateDB(categoriesModel.categoryNameEn, categoriesModel.categoryNameAr)}",
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 15),
           )

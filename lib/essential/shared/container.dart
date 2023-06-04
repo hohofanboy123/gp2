@@ -1,9 +1,7 @@
-import 'package:fexercise/essential/constants/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../controller/multiscreen_controller.dart';
 
 class HomeContainer extends StatelessWidget {
   final String image;

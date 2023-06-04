@@ -16,38 +16,38 @@ class Home extends StatelessWidget{
         children: <Widget>[
           HomeContainer(
             image: ImageUse.calories,
-            title: "Calories",
-            text: "Track your calories and keep\nup with your daily goal!",
-            color: Color(0XFF769AB8),
+            title: "calories".tr,
+            text: "trackCalories".tr,
+            color: const Color(0XFF769AB8),
             onTap: () {
-              controller.goToFoodList();
+              controller.goToCalories();
               },
           ),
           HomeContainer(
             image: ImageUse.exercises,
-            title: "Exercises",
-            text: "Train different parts of your\nbody to achieve your dream\nphysique",
-            color: Color(0XFFE87E91),
+            title: "exercises".tr,
+            text: "exercisesDesc".tr,
+            color: const Color(0XFFE87E91),
             onTap: () {
               controller.goToExercise();
               },
           ),
           HomeContainer(
             image: ImageUse.diets,
-            title: "Nutrition",
-            text: "Track what you eat",
-            color: Color(0XFFF3CCA2),
+            title: "nutrition".tr,
+            text: "nutritionDesc".tr,
+            color: const Color(0XFFF3CCA2),
             onTap: () {
               controller.goToFoodList();
               },
           ),
           HomeContainer(
             image: ImageUse.posts,
-            title: "Feed",
-            text: "Join the online community\nand read our new posts.",
-            color: Color(0XFF9FBB9B),
+            title: "feed".tr,
+            text: "feedDesc".tr,
+            color: const Color(0XFF9FBB9B),
             onTap: () {
-              controller.goToCalories();
+              controller.goToFeed();
               },
           ),
         ],

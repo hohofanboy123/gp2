@@ -1,7 +1,5 @@
 import 'package:fexercise/essential/constants/image_use.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:lottie/lottie.dart';
 
 class Test extends StatelessWidget {

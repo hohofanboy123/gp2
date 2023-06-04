@@ -1,4 +1,3 @@
-import 'package:fexercise/data/datasource/remote/bowl_data.dart';
 import 'package:fexercise/data/model/food_model.dart';
 import 'package:fexercise/essential/constants/route_name.dart';
 import 'package:flutter/material.dart';

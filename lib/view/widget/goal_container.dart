@@ -26,7 +26,7 @@ class GoalContainer extends StatelessWidget {
           child: 
             Center(
               child:
-                Text(text, textAlign: TextAlign.center, style: TextStyle(fontSize: 15),)
+                Text(text, textAlign: TextAlign.center, style: const TextStyle(fontSize: 15),)
             ),
           ),
         ),

@@ -1,16 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fexercise/data/model/food_model.dart';
 import 'package:fexercise/essential/constants/global_constants.dart';
-import 'package:fexercise/view/screen/welcome_widgets/custom_button.dart';
 import 'package:fexercise/view/widget/macros.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../../controller/food_detail_controller.dart';
+import '../../../essential/functions/db_translation.dart';
 import '../../../link_api.dart';
 import 'food_risk_indicator.dart';
 
@@ -41,8 +37,8 @@ class FoodDetail extends StatelessWidget {
               alignment: Alignment.topRight,
               child: Container(
                 width: Get.width / 4,
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(5),
+                margin: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: blue2,
                   borderRadius: BorderRadius.circular(30),
@@ -53,9 +49,9 @@ class FoodDetail extends StatelessWidget {
                       onPressed: () {
                         controller.goToBowl();
                       },
-                      icon: FaIcon(FontAwesomeIcons.bowlFood, size: 25, color: Colors.white,)
+                      icon: const FaIcon(FontAwesomeIcons.bowlFood, size: 25, color: Colors.white,)
                       ),
-                      Text("Bowl", style: TextStyle(color: Colors.white, fontSize: 15),),
+                      Text("bowl".tr, style: const TextStyle(color: Colors.white, fontSize: 15),),
                   ],
                 )
                 ),
@@ -78,8 +74,8 @@ class FoodDetail extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Color(0XFFFFFDFA),
-                    boxShadow: [
+                    color: const Color(0XFFFFFDFA),
+                    boxShadow: const [
                       BoxShadow(
                         offset: Offset(0, 10),
                         color: Colors.grey,
@@ -87,8 +83,8 @@ class FoodDetail extends StatelessWidget {
                       )
                     ]
                   ),
-                  margin: EdgeInsets.all(15),
-                  padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                  margin: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
                   height: Get.height/2,
                   width: Get.width,
                     child: Column(
@@ -96,22 +92,20 @@ class FoodDetail extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          "${controller.foodModel.foodNameEn}",
-                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                          "${translateDB(controller.foodModel.foodNameEn, controller.foodModel.foodNameAr)}",
+                          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                         ),
-                        const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text("MACROS PER 100G" , style: TextStyle(fontSize: 15),)
-                        ),
+                        Text("macros".tr , style: const TextStyle(fontSize: 15),),
                         Row(
                                 children: [
-                                  FaIcon(FontAwesomeIcons.fire, size: 15, color: Colors.red,),
-                                  Text(" ${(controller.foodModel.kcal!*100).toStringAsFixed(0)} Kcal"),
+                                  const FaIcon(FontAwesomeIcons.fire, size: 15, color: Colors.red,),
+                                  Text(" ${(controller.foodModel.kcal!*100).toStringAsFixed(0)}"),
+                                  Text("kcal2".tr)
                                 ],
                               ),
                         //SizedBox(height: 20,),
                             Macros(
-                              name: "Carbs",
+                              name: "carbs".tr,
                               icon: FaIcon(FontAwesomeIcons.breadSlice, size: 25, color: Colors.green.withOpacity(0.5),),
                               grams: "${((controller.foodModel.carbs!)*100).toStringAsFixed(1)}g",
                               percent: controller.foodModel.carbs! * 1.0,
@@ -124,7 +118,7 @@ class FoodDetail extends StatelessWidget {
                               bgColor: Colors.green.withOpacity(0.5),
                               ),
                             Macros(
-                              name: "Fats",
+                              name: "fats".tr,
                               icon: FaIcon(FontAwesomeIcons.bacon, size: 25, color: Colors.red.withOpacity(0.5),),
                               grams: "${((controller.foodModel.fats!)*100).toStringAsFixed(1)}g",
                               percent: controller.foodModel.fats! * 1.0,
@@ -137,7 +131,7 @@ class FoodDetail extends StatelessWidget {
                               bgColor: Colors.red.withOpacity(0.5),
                               ),
                             Macros(
-                              name: "Protein",
+                              name: "protein".tr,
                               icon: FaIcon(FontAwesomeIcons.drumstickBite, size: 25, color: Colors.orange.withOpacity(0.5),),
                               grams: "${((controller.foodModel.protein!)*100).toStringAsFixed(1)}g",
                               percent: controller.foodModel.protein! * 1.0,
@@ -149,8 +143,8 @@ class FoodDetail extends StatelessWidget {
                                   ),
                               bgColor: Colors.orange.withOpacity(0.5),
                               ),
-                              RiskIndicator(),
-                              Text("Enter amount in grams" , style: TextStyle(fontSize: 15),),
+                              const RiskIndicator(),
+                              Text("enterAmount".tr , style: const TextStyle(fontSize: 15),),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
@@ -168,7 +162,7 @@ class FoodDetail extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(30),
                                         ),
                                         //labelText: "Enter amount",
-                                        hintText: "e.g., 100",
+                                        hintText: "example".tr,
                                         hintStyle: const TextStyle(
                                           fontSize: 12,
                                         ),
@@ -182,7 +176,6 @@ class FoodDetail extends StatelessWidget {
                                       onPressed: (){
                                         controller.addToBowl();
                                       },
-                                      child: Text("Add to bowl"),
                                       style: ButtonStyle(
                                             backgroundColor: MaterialStateProperty.all<Color>(orange),
                                             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -191,6 +184,7 @@ class FoodDetail extends StatelessWidget {
                                               ),
                                             ),
                                           ),
+                                      child: Text("addBowl".tr),
                                     ),
                                   )
                                 ],

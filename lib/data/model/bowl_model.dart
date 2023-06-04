@@ -1,5 +1,6 @@
 class BowlModel {
   String? foodNameEn;
+  String? foodNameAr;
   String? foodImage;
   int? bowlItemId;
   int? bowlUserId;
@@ -12,6 +13,7 @@ class BowlModel {
 
   BowlModel(
       {this.foodNameEn,
+      this.foodNameAr,
       this.foodImage,
       this.bowlItemId,
       this.bowlUserId,
@@ -24,6 +26,7 @@ class BowlModel {
 
   BowlModel.fromJson(Map<String, dynamic> json) {
     foodNameEn = json['food_name_en'];
+    foodNameEn = json['food_name_ar'];
     foodImage = json['food_image'];
     bowlItemId = json['bowl_item_id'];
     bowlUserId = json['bowl_user_id'];
@@ -38,6 +41,7 @@ class BowlModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['food_name_en'] = foodNameEn;
+    data['food_name_ar'] = foodNameAr;
     data['food_image'] = foodImage;
     data['bowl_item_id'] = bowlItemId;
     data['bowl_user_id'] = bowlUserId;

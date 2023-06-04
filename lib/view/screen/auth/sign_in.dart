@@ -4,8 +4,9 @@ import 'package:fexercise/essential/constants/image_use.dart';
 import 'package:fexercise/essential/functions/validation.dart';
 import 'package:fexercise/essential/shared/custom_inkwell.dart';
 import 'package:fexercise/essential/shared/custom_text_field.dart';
-import 'package:fexercise/view/screen/auth/auth_button.dart';
+import 'package:fexercise/view/screen/welcome_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../essential/constants/global_constants.dart';
@@ -19,7 +20,7 @@ class SignIn extends StatelessWidget{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("12".tr),
+        title: Text("SignIn".tr),
         backgroundColor: Colors.white,
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -49,7 +50,7 @@ class SignIn extends StatelessWidget{
               children: [
                 //top box text area
                 Text(
-                  "14".tr,
+                  "welcomeBack".tr,
                   style: const TextStyle(
                     color: textColor,
                     fontSize: 20,
@@ -58,7 +59,7 @@ class SignIn extends StatelessWidget{
                 ),
                 const SizedBox(height: 5,),
                 Text(
-                  "15".tr,
+                  "SignInDesc".tr,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20,),
@@ -74,8 +75,8 @@ class SignIn extends StatelessWidget{
                   validation: (val){
                     return validateEmailInput(val!);
                   },
-                  labelTxt: "16".tr,
-                  hintTxt: "17".tr,
+                  labelTxt: "email".tr,
+                  hintTxt: "enterEmail".tr,
                   icon: Icons.email_outlined,
                   cont: controller.email,
                 ),
@@ -88,8 +89,8 @@ class SignIn extends StatelessWidget{
                         controller.showPassword();
                       },
                       cont: controller.password,
-                      labelTxt: "18".tr,
-                      hintTxt: "19".tr,
+                      labelTxt: "pass".tr,
+                      hintTxt: "enterPass".tr,
                       icon: Icons.lock_outline,
                       icon2: Icons.visibility_off_outlined,
                       validation: (val){
@@ -107,15 +108,15 @@ class SignIn extends StatelessWidget{
                       controller.goToForgotPassword();
                     },
                     child: Text(
-                        "20".tr,
+                        "forgotPass".tr,
                         textAlign: TextAlign.end,
                       ),
                   ),
                   ],
                 ),
                 //Sign in button
-                AuthButton(
-                  text: "12".tr,
+                CustomButton(
+                  text: "SignIn".tr,
                   press: () {
                     controller.signIn();
                   },
@@ -123,12 +124,26 @@ class SignIn extends StatelessWidget{
                 const SizedBox(height: 10,),
                 //sign up
                 CustomeInkWell(
-                  textOne: "21".tr,
-                  textTwo: "13".tr,
+                  textOne: "noAcc".tr,
+                  textTwo: "SignUp".tr,
                   onTap: (){
                     controller.goToSignUp();
                   },
                 ),
+                const SizedBox(height: 10,),
+                const Row(
+                  children: [
+                    Expanded(child: Divider(thickness: 2.5, endIndent: 5,)),
+                    Text("OR"),
+                    Expanded(child: Divider(thickness: 2.5, indent: 5,)),
+                  ],
+                ),
+                IconButton(
+                  onPressed: (){
+                    controller.googleSignIn();
+                  },
+                  icon: const FaIcon(FontAwesomeIcons.google, color: Colors.blue,)
+                )
               ]
             ),
           ),

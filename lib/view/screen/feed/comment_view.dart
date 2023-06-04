@@ -18,7 +18,7 @@ class CommentView extends StatelessWidget {
     return Scaffold(
                   resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Comment Page'),
+        title: const Text('Comment Page'),
       ),
       body:  Column(
         children: [
@@ -71,16 +71,16 @@ class CommentView extends StatelessWidget {
             : textColor
             ),
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(controller.postsModel.postTime!)),
           ),
       ],
     ),
-    SizedBox(height: 15,),
+    const SizedBox(height: 15,),
     Expanded(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Text(
           "${controller.postsModel.postContent}",
           style: const TextStyle(fontSize: 15),
@@ -96,7 +96,7 @@ class CommentView extends StatelessWidget {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 15 ,vertical: 10),
                 width: Get.width / 1.3,
                 child: TextField(
                   controller: controller.commentContent,
@@ -114,17 +114,17 @@ class CommentView extends StatelessWidget {
                 onPressed: (){
                   controller.commentAComment();
                 },
-                icon: FaIcon(FontAwesomeIcons.arrowRight)
+                icon: const FaIcon(FontAwesomeIcons.arrowRight)
               ),
             ],
           ),
-          CustomDivider(
+          const CustomDivider(
             text: "Comments"
           ),
           GetBuilder<CommentsContollerImp>(
               builder: (controller) => ReqViewHandle(
                 statusRequest: controller.statusRequest,
-                widget:CommentList(),
+                widget:const CommentList(),
               )
           )
         ],

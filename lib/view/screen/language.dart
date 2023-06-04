@@ -23,7 +23,7 @@ class Language extends GetView<LanguageController> {
             ),
             const SizedBox(height: 30,),
             Text(
-              "1".tr,
+              "chooseLang".tr,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 30,
@@ -32,14 +32,14 @@ class Language extends GetView<LanguageController> {
             const SizedBox(height: 30,),
             SizedBox(
               width: double.infinity,
-              child: CustomButton(text: "2".tr, press: () {
+              child: CustomButton(text: "ar".tr, press: () {
                 controller.changeLang("ar");
                 Get.offNamed(AppRoute.welcome);
               }),
             ),
              SizedBox(
               width: double.infinity,
-              child: CustomButton(text: "3".tr, press: () {
+              child: CustomButton(text: "en".tr, press: () {
                 controller.changeLang("en");
                 Get.offNamed(AppRoute.welcome);
               }),

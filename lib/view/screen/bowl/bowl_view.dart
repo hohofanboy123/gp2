@@ -3,8 +3,6 @@ import 'package:fexercise/view/screen/bowl/bowl_list.dart';
 import 'package:fexercise/view/screen/bowl/bowl_summary.dart';
 import 'package:fexercise/view/screen/welcome_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -23,13 +21,13 @@ class BowlView extends StatelessWidget {
                 widget: Scaffold(
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: Get.height / 1.5,
-            child: BowlList()
+            child: const BowlList()
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            margin: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.symmetric(horizontal: 15),
             height: Get.height / 5,
             width: Get.width,
             decoration: BoxDecoration(
@@ -39,40 +37,40 @@ class BowlView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Bowl summary", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),),
-                SizedBox(height: 20,),
+                Text("summary".tr, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),),
+                const SizedBox(height: 20,),
                 BowlSummary(
-                  icon: FaIcon(FontAwesomeIcons.fire, size: 15, color: Colors.red,),
-                  title: "Total Calories",
+                  icon: const FaIcon(FontAwesomeIcons.fire, size: 15, color: Colors.red,),
+                  title: "totalCalories".tr,
                   amount: controller.consumedKcal.toString(),
-                  unit: " Kcal",
+                  unit: "kcal2".tr,
                 ),
-                Divider(),
+                const Divider(),
                 BowlSummary(
-                  icon: FaIcon(FontAwesomeIcons.breadSlice, size: 15, color: Colors.green,),
-                  title: "Total Carbohydrates",
+                  icon: const FaIcon(FontAwesomeIcons.breadSlice, size: 15, color: Colors.green,),
+                  title: "totalCarbohydrates".tr,
                   amount: controller.consumedCarbs.toString(),
-                  unit: " g",
+                  unit: "unit".tr,
                 ),
-                Divider(height: 3,),
+                const Divider(height: 3,),
                 BowlSummary(
-                  icon: FaIcon(FontAwesomeIcons.bacon, size: 15, color: Colors.red,),
-                  title: "Total Fats",
+                  icon: const FaIcon(FontAwesomeIcons.bacon, size: 15, color: Colors.red,),
+                  title: "totalFats".tr,
                   amount: controller.consumedFats.toString(),
-                  unit: " g",
+                  unit: "unit".tr,
                 ),
-                Divider(height: 3,),
+                const Divider(height: 3,),
                 BowlSummary(
-                  icon: FaIcon(FontAwesomeIcons.drumstickBite, size: 15, color: Colors.orange,),
-                  title: "Total Protein",
+                  icon: const FaIcon(FontAwesomeIcons.drumstickBite, size: 15, color: Colors.orange,),
+                  title: "totalProtein".tr,
                   amount: controller.consumedProtein.toString(),
-                  unit: " g",
+                  unit: "unit".tr,
                 ),
               ],
             ),
           ),
           CustomButton(
-            text: "text",
+            text: "eat".tr,
             press: (){
               controller.addToFoodHistory();
             }

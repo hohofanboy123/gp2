@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/welcome_controller.dart';
-import 'welcome_widgets/custom_button.dart';
 import 'welcome_widgets/dot_builder.dart';
 import 'welcome_widgets/welcome_slider_builder.dart';
 
@@ -30,21 +29,21 @@ class WelcomeScreen extends StatelessWidget{
                   const DotBuilder(),
                   SizedBox(height: Get.height * (20 / 375.0)),
                   RaisedGradientButton(
-                    child: Text("Sign in", style: TextStyle(
+                    gradient: gradientColor,
+                    onPressed: (){},
+                    child: Text("SignIn".tr, style: TextStyle(
             fontSize: Get.width * (20 / 375.0),//SizeConfig.scrnWidth! * (25 / 375.0),
             color: Colors.white,
-          ),),
-                    gradient: gradientColor,
-                    onPressed: (){}
+          ),)
                   ),
                   SizedBox(height: Get.height * (5 / 375.0)),
                   RaisedGradientButton(
-                    child: Text("Sign up", style: TextStyle(
+                    gradient: gradientColor,
+                    onPressed: (){},
+                    child: Text("SignUp".tr, style: TextStyle(
             fontSize: Get.width * (20 / 375.0),//SizeConfig.scrnWidth! * (25 / 375.0),
             color: Colors.white,
-          ),),
-                    gradient: gradientColor,
-                    onPressed: (){}
+          ),)
                   ),
                   const Spacer(flex: 1,),
                 ],

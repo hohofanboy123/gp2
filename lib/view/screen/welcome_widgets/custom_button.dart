@@ -62,11 +62,11 @@ class CustomCommentButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-          elevation: MaterialStatePropertyAll(0.0),
+          elevation: const MaterialStatePropertyAll(0.0),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(35.0),
-              side: BorderSide(color: Colors.black)
+              side: const BorderSide(color: Colors.black)
             ),
           ),
         ),

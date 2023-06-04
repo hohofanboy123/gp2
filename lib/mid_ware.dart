@@ -17,6 +17,7 @@ class MiddleWare extends GetMiddleware{
     {
       return const RouteSettings(name: AppRoute.signIn);
     }
+    return null;
   }
 
 }

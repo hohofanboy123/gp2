@@ -37,7 +37,7 @@ class Macros extends StatelessWidget {
           child: icon
         )
       ),
-      SizedBox(width: 10,),
+      const SizedBox(width: 10,),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -46,16 +46,16 @@ class Macros extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(name, style: TextStyle(fontSize: 15)),
-                Text(grams, style: TextStyle(fontSize: 15)),
+                Text(name, style: const TextStyle(fontSize: 15)),
+                Text(grams, style: const TextStyle(fontSize: 15)),
               ],
             ),
           ),
           LinearPercentIndicator(
-            padding: EdgeInsets.symmetric(horizontal: 0),
+            padding: const EdgeInsets.symmetric(horizontal: 0),
             percent: percent,
             width: Get.width / 1.4,
-            barRadius: Radius.circular(30),
+            barRadius: const Radius.circular(30),
             lineHeight: 15,
             linearGradient: color,
             backgroundColor: bgColor,
@@ -74,7 +74,8 @@ class DailyMacros extends StatelessWidget {
   final Color color;
   final String name;
   final String amount;
-  const DailyMacros({super.key, required this.color, required this.name, required this.amount});
+  final double percent;
+  const DailyMacros({super.key, required this.color, required this.name, required this.amount, required this.percent});
 
   @override
   Widget build(BuildContext context) {
@@ -83,14 +84,14 @@ class DailyMacros extends StatelessWidget {
                                   children: [
                                     LinearPercentIndicator(
                                       progressColor: color,
-                                      percent: 0.5,
-                                      padding: EdgeInsets.symmetric(horizontal: 0),
+                                      percent: percent,
+                                      padding: const EdgeInsets.symmetric(horizontal: 0),
                                       width: 80,
                                       lineHeight: 5,
-                                      barRadius: Radius.circular(30),
+                                      barRadius: const Radius.circular(30),
                                     ),
-                                    Text(name, style: TextStyle(fontSize: 10,color: Colors.white,),),
-                                    Text(amount, style: TextStyle(color: Colors.white,),),
+                                    Text(name, style: const TextStyle(fontSize: 10,color: Colors.white,),),
+                                    Text(amount, style: const TextStyle(color: Colors.white,),),
                                   ],
                                 );
   }

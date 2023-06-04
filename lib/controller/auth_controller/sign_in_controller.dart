@@ -6,6 +6,7 @@ import '../../data/datasource/remote/auth/sign_in_data.dart';
 import '../../essential/classes/status_request.dart';
 import '../../essential/functions/handling_data_controller.dart';
 import '../../essential/getxservices/services.dart';
+import 'google_sign_in.dart';
 
 abstract class SignInController extends GetxController {
 
@@ -88,5 +89,39 @@ class SignInControllerImp extends SignInController {
     email.dispose();
     password.dispose();
     super.dispose();
+  }
+
+  Future googleSignIn() async {
+    var user = await GoogleSignInApi.login();
+    if(user != null)
+    {
+      final List<String>? nameParts = user.displayName?.split(' ');
+      String? firstName = nameParts?.first;
+      String? lastName = nameParts?.last;
+      statusRequest = StatusRequest.loading;
+      var response = await signInData.googleSignIn(firstName!, lastName!, user.email);
+      statusRequest = handlingData(response);
+      if(StatusRequest.success == statusRequest){
+        if(response['status'] == "success")
+        {
+          services.sharedPreferences.setInt("id", response['data']['user_id']);
+          services.sharedPreferences.setString("fname", response['data']['fname']);
+          services.sharedPreferences.setString("lname", response['data']['lname']);
+          services.sharedPreferences.setString("email", response['data']['email']);
+          services.sharedPreferences.setString("gender", response['data']['gender'].toString());
+          Get.offNamed(AppRoute.multiscreen);
+        }
+        else
+        {
+          Get.defaultDialog(title: "OOPS", middleText: "Something went wrong");
+          statusRequest = StatusRequest.taskFailure;
+        }
+      }
+      else
+      {
+        Get.defaultDialog(title: "OOPS", middleText: "Something went wrong with google sign in");
+      }
+      update();
+    }
   }
 }

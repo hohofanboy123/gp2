@@ -18,15 +18,13 @@ class DailyInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(DailyInfoControllerImp());
     return GetBuilder<DailyInfoControllerImp>(
-                        builder: (controller) => DataViewHandle(
-                          statusRequest: controller.statusRequest,
-                          widget: Scaffold(
+                        builder: (controller) =>  Scaffold(
       body: Column(
         children: [
           ClipPath(
             clipper: MyClipper(),
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 50),
+              padding: const EdgeInsets.symmetric(vertical: 50),
                                 height: Get.height/2.3,
                                 width: Get.width,
                                 color: blue3,
@@ -35,7 +33,7 @@ class DailyInfo extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Column(
+                                        const Column(
                                           children: [
                                             FaIcon(FontAwesomeIcons.utensils, color: Colors.orange,),
                                             Text("208", style: TextStyle(fontSize: 25,color: Colors.white,),),
@@ -45,7 +43,7 @@ class DailyInfo extends StatelessWidget {
                                         CircularPercentIndicator(
                                           linearGradient: gradientColor2,
                                           radius: Get.width / 4.5,
-                                          percent: controller.consumedKcal/controller.tdee > 1 ? 1 : controller.consumedKcal/controller.tdee,
+                                          percent: controller.consumedKcal == 0 ? 0.00001 : controller.consumedKcal/controller.tdee > 1 ? 1 : controller.consumedKcal/controller.tdee,
                                           lineWidth: 15,
                                           circularStrokeCap: CircularStrokeCap.round,
                                           backgroundColor: orange.withOpacity(0.3),
@@ -55,15 +53,15 @@ class DailyInfo extends StatelessWidget {
                                           center: RichText(
                                             textAlign: TextAlign.center,
                                             text: TextSpan(
-                                              style: TextStyle(),
+                                              style: const TextStyle(),
                                               children: [
-                                                TextSpan(text: controller.consumedKcal.toString(), style: TextStyle(color: Colors.white, fontSize: 30,)),
-                                                TextSpan(text: "\n/${controller.tdee}", style: TextStyle(color: Colors.grey))
+                                                TextSpan(text: controller.consumedKcal.toString(), style: const TextStyle(color: Colors.white, fontSize: 30,)),
+                                                TextSpan(text: "\n/${controller.tdee}", style: const TextStyle(color: Colors.grey))
                                               ]
                                             )
                                             ),
                                           ),
-                                          Column(
+                                          const Column(
                                           children: [
                                             FaIcon(FontAwesomeIcons.fire, color: Colors.red,),
                                             Text("0", style: TextStyle(fontSize: 25,color: Colors.white,),),
@@ -72,24 +70,27 @@ class DailyInfo extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 20,),
+                                    const SizedBox(height: 20,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
                                         DailyMacros(
                                           color: Colors.green,
-                                          name: "Carbs",
-                                          amount: controller.consumedCarbs.toString()//controller.consumedCarbs.toString(),
+                                          name: "carbs".tr,
+                                          amount: controller.consumedCarbs.toString(),//controller.consumedCarbs.toString(),
+                                          percent: controller.consumedCarbs == 0 ? 0.00001 : controller.consumedCarbs/controller.carbsDaily > 1 ? 1 : controller.consumedCarbs/controller.carbsDaily,
                                         ),
                                         DailyMacros(
                                           color: Colors.red,
-                                          name: "Fats",
-                                          amount: controller.consumedFats.toString()//controller.consumedCarbs.toString(),
+                                          name: "fats".tr,
+                                          amount: controller.consumedFats.toString(),//controller.consumedCarbs.toString(),
+                                          percent: controller.consumedFats == 0 ? 0.00001 : controller.consumedFats/controller.fatsDaily > 1 ? 1 : controller.consumedFats/controller.fatsDaily,
                                         ),
                                         DailyMacros(
                                           color: Colors.orange,
-                                          name: "Proten",
-                                          amount: controller.consumedProtein.toString()//controller.consumedCarbs.toString(),
+                                          name: "protein".tr,
+                                          amount: controller.consumedProtein.toString(),//controller.consumedCarbs.toString(),
+                                          percent: controller.consumedProtein == 0 ? 0.00001 : controller.consumedProtein/controller.proteinDaily > 1 ? 1 : controller.consumedProtein/controller.proteinDaily,
                                         ),
                                       ],
                                     )
@@ -97,21 +98,24 @@ class DailyInfo extends StatelessWidget {
                               )
                             ),
           ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                         Text("Monday 21st", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                         FaIcon(FontAwesomeIcons.calendar)
                       ],),
                 Container(
-      margin: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
       height: Get.height / 2,
-      child:
-                            FoodHistory(),
+      
+      child: GetBuilder<DailyInfoControllerImp>(
+                        builder: (controller) => ReqViewHandle(
+                          statusRequest: controller.statusRequest,
+                          widget: 
+                            const FoodHistory(),
                         ),
-                      ]),
+                        ))]),
                       ),
-      ),
       );
   }
 }

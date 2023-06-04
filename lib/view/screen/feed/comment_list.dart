@@ -90,10 +90,10 @@ class Comments extends GetView<CommentsContollerImp> {
         ),
       ],
     ),
-    SizedBox(height: 15,),
+    const SizedBox(height: 15,),
     Expanded(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Text(
           "${commentModel.commentContent}",
           style: const TextStyle(fontSize: 15),

@@ -1,5 +1,6 @@
 class FoodHistoryModel {
   String? foodNameEn;
+  String? foodNameAr;
   String? foodImage;
   int? foodEatenId;
   int? userId;
@@ -13,6 +14,7 @@ class FoodHistoryModel {
 
   FoodHistoryModel(
       {this.foodNameEn,
+      this.foodNameAr,
       this.foodImage,
       this.foodEatenId,
       this.userId,
@@ -26,6 +28,7 @@ class FoodHistoryModel {
 
   FoodHistoryModel.fromJson(Map<String, dynamic> json) {
     foodNameEn = json['food_name_en'];
+    foodNameEn = json['food_name_ar'];
     foodImage = json['food_image'];
     foodEatenId = json['food_eaten_id'];
     userId = json['user_id'];
@@ -41,6 +44,7 @@ class FoodHistoryModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['food_name_en'] = foodNameEn;
+    data['food_name_en'] = foodNameAr;
     data['food_image'] = foodImage;
     data['food_eaten_id'] = foodEatenId;
     data['user_id'] = userId;

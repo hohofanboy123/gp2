@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/daily_info_controller.dart';
 import '../../../data/model/food_history_model.dart';
+import '../../../essential/functions/db_translation.dart';
 import '../../../link_api.dart';
 import '../bowl/bowl_nutrients.dart';
 
@@ -15,7 +16,7 @@ class FoodHistory extends GetView<DailyInfoControllerImp> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
           //separatorBuilder: (context, index) => const SizedBox(width: 10),
           itemCount: controller.foodHistory.length,
           scrollDirection: Axis.vertical,
@@ -39,8 +40,8 @@ class FoodsEaten extends GetView<DailyInfoControllerImp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       height: 140,
       decoration: BoxDecoration(
         border: Border.all(
@@ -56,7 +57,7 @@ class FoodsEaten extends GetView<DailyInfoControllerImp> {
                               imageUrl: "${ApiLinks.foodImg}/${foodHistoryModel.foodImage}",
                               fit: BoxFit.scaleDown,
                               ),
-                              SizedBox(width: 10,),
+                              const SizedBox(width: 10,),
               Flexible(
                 fit: FlexFit.loose,
                 child: Column(
@@ -64,14 +65,18 @@ class FoodsEaten extends GetView<DailyInfoControllerImp> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                       Text(
-                          "${foodHistoryModel.foodNameEn}",
+                          "${translateDB(foodHistoryModel.foodNameEn, foodHistoryModel.foodNameAr)}",
+                          
                           //textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 15),
                       ),
                     Row(
                       children: [
-                        FaIcon(FontAwesomeIcons.fire, color: Colors.red,size: 15,),
-                        Text(" ${(foodHistoryModel.kcal!)} Kcal ⋅ ${(foodHistoryModel.quantity!)} grams"),
+                        const FaIcon(FontAwesomeIcons.fire, color: Colors.red,size: 15,),
+                        Text(" ${(foodHistoryModel.kcal)} "),
+                        Text("kcal2".tr),
+                        Text(" ⋅ ${(foodHistoryModel.quantity!)} "),
+                        Text("unit2".tr)
                       ],
                     ),
                     SizedBox(
@@ -81,15 +86,15 @@ class FoodsEaten extends GetView<DailyInfoControllerImp> {
                         children: [
                           BowlNutrients(
                             nutrient: "${foodHistoryModel.carbs}",
-                            icon: FaIcon(FontAwesomeIcons.breadSlice , size: 15,),
+                            icon: const FaIcon(FontAwesomeIcons.breadSlice , size: 15,),
                           ),
                           BowlNutrients(
                             nutrient: "${foodHistoryModel.fats}",
-                            icon: FaIcon(FontAwesomeIcons.bacon , size: 15,),
+                            icon: const FaIcon(FontAwesomeIcons.bacon , size: 15,),
                           ),
                           BowlNutrients(
                             nutrient: "${foodHistoryModel.protein}",
-                            icon: FaIcon(FontAwesomeIcons.drumstickBite , size: 15,),
+                            icon: const FaIcon(FontAwesomeIcons.drumstickBite , size: 15,),
                           )
                         ],
                       ),
@@ -102,7 +107,7 @@ class FoodsEaten extends GetView<DailyInfoControllerImp> {
                           onPressed: (){
                             
                           },
-                          icon: FaIcon(FontAwesomeIcons.trash, size: 15,),
+                          icon: const FaIcon(FontAwesomeIcons.trash, size: 15,),
                         ),
                         //Text("    "),
                       ],

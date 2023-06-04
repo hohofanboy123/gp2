@@ -18,7 +18,7 @@ class SignUp extends StatelessWidget{
       backgroundColor: Colors.white,
       //APP BAR SETTINGS
       appBar: AppBar(
-        title: Text("13".tr),
+        title: Text("SignUp".tr),
         backgroundColor: Colors.white,
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -45,7 +45,7 @@ class SignUp extends StatelessWidget{
               child: Column(
                 children: [
                   Text(
-                    "25".tr,
+                    "gladToSeeu".tr,
                     style: const TextStyle(
                       color: textColor,
                       fontSize: 20,
@@ -53,7 +53,7 @@ class SignUp extends StatelessWidget{
                     ),
                   ),
                   Text(
-                    "26".tr,
+                    "signUpDesc".tr,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 30,),
@@ -66,8 +66,8 @@ class SignUp extends StatelessWidget{
                   //FIRST NAME FIELD
                   CustomTextField(
                     cont: controller.fname,
-                    labelTxt: "27".tr,
-                    hintTxt: "28".tr,
+                    labelTxt: "fname".tr,
+                    hintTxt: "enterFname".tr,
                     icon: Icons.perm_identity_outlined,
                     validation: (val){
                         return validateName(val!);
@@ -77,8 +77,8 @@ class SignUp extends StatelessWidget{
                   //LAST NAME FIELD
                   CustomTextField(
                     cont: controller.lname,
-                    labelTxt: "29".tr,
-                    hintTxt: "30".tr,
+                    labelTxt: "lname".tr,
+                    hintTxt: "enterLname".tr,
                     icon: Icons.perm_identity_outlined,
                     validation: (val){
                         return validateName(val!);
@@ -87,8 +87,8 @@ class SignUp extends StatelessWidget{
                   const SizedBox(height: 20,),
                   //EMAIL FIELD
                   EmailCustomTextField(
-                    labelTxt: "16".tr,
-                    hintTxt: "17".tr,
+                    labelTxt: "email".tr,
+                    hintTxt: "enterEmail".tr,
                     cont: controller.email,
                     icon: Icons.email_outlined,
                     validation: (val){
@@ -104,8 +104,8 @@ class SignUp extends StatelessWidget{
                         controller.showPassword();
                       },
                       cont: controller.password,
-                      labelTxt: "18".tr,
-                      hintTxt: "19".tr,
+                      labelTxt: "pass".tr,
+                      hintTxt: "enterPass".tr,
                       icon: Icons.lock_outline,
                       icon2: Icons.visibility_off_outlined,
                       validation: (val){
@@ -116,7 +116,7 @@ class SignUp extends StatelessWidget{
                   const SizedBox(height: 20,),
                   //SIGN UP BUTTON
                   AuthButton(
-                    text: "13".tr,
+                    text: "SignUp".tr,
                     press: () {
                       controller.signUp();
                     },
@@ -124,8 +124,8 @@ class SignUp extends StatelessWidget{
                   const SizedBox(height: 10,),
                   //ALREADY HAVE AN ACCOUNT?
                   CustomeInkWell(
-                    textOne: "33".tr,
-                    textTwo: "12".tr,
+                    textOne: "alreadySigned".tr,
+                    textTwo: "SignIn".tr,
                     onTap: (){
                       controller.goToSignIn();
                     }
@@ -133,7 +133,7 @@ class SignUp extends StatelessWidget{
                 ]
               ),
             ),
-            ),
+          ),
         ),
       ),
       ),

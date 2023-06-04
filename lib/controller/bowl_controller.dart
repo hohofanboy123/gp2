@@ -66,6 +66,7 @@ class BowlControllerImp extends BowlController {
   @override
   addToFoodHistory() async {
 
+  // ignore: prefer_typing_uninitialized_variables
   var response;
 
     statusRequest = StatusRequest.loading;

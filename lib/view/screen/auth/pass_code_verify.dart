@@ -40,15 +40,15 @@ class VerifyOtp extends StatelessWidget{
           child: Column(
             children: [
               //top box text area
-              Text(
+              const Text(
                 "OTP",
-                style: const TextStyle(
+                style: TextStyle(
                   color: textColor,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 "Enter the OTP sent to your email",
                 textAlign: TextAlign.center,
               ),

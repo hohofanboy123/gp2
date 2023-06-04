@@ -1,6 +1,5 @@
 import 'package:fexercise/data/datasource/remote/body_data.dart';
 import 'package:fexercise/view/screen/calories/daily_info.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../essential/classes/status_request.dart';
@@ -80,6 +79,7 @@ class ColoriesControllerImp extends ColoriesController {
   updateData() async{
     statusRequest = StatusRequest.loading;
     gender = isMaleSelected.value == true ? "male" : "female";
+    services.sharedPreferences.setString("gender", gender!);
       var response = await bodyData.postData(
         id!.toString(),
         gender!,
@@ -89,18 +89,15 @@ class ColoriesControllerImp extends ColoriesController {
         selectedActivity.toString(),
         selectedGoal.toString()
       );
-      print(response);
       statusRequest = handlingData(response);
       if(StatusRequest.success == statusRequest){
         if(response['status'] == "success")
         {
           insertAllergy();
-          Get.to(const DailyInfo());
-          Get.defaultDialog(title: "UPDATED", middleText: "GG");
+          Get.to(() => const DailyInfo());
         }
         else
         {
-          Get.defaultDialog(title: "OOPS", middleText: "EMAIL ALREADY EXISTS");
           statusRequest = StatusRequest.taskFailure;
         }
       }

@@ -22,4 +22,5 @@ class AppRoute{
   static const String dailyInfo                    = "/calories/daily_info.dart";
 
   static const String bowl                         = "/bowl/bowl_view.dart";
+  static const String feed                         = "/test/test_main.dart";
 }

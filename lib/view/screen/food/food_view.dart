@@ -19,11 +19,10 @@ class FoodView extends StatelessWidget {
       body: 
           ListView(
             children: [
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               SearchCustomTextField(
                 cont: controller.search,
-                labelTxt: "SEARCH",
-                hintTxt: "search for food",
+                hintTxt: "searchFood".tr,
                 onChanged: (val){
                   controller.checkSearch(val);
                 },
@@ -36,7 +35,7 @@ class FoodView extends StatelessWidget {
                DataViewHandle(
                 statusRequest: controller.statusRequest,
                 widget: !controller.isSearch ? 
-              Column(
+              const Column(
                 children: [
                   FoodList(),
                 ],
@@ -58,7 +57,7 @@ class FoodSearch extends StatelessWidget {
     return ListView.builder(
       itemCount: searchFood.length,
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context , index){
         return Text("${searchFood[index].foodNameEn}");
       }

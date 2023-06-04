@@ -18,16 +18,28 @@ class MultiScreen extends StatelessWidget{
         toolbarHeight: 100,
           flexibleSpace: Container(
             alignment: Alignment.bottomLeft,
-            margin: EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               children: [
-                Text(
-                  "Hello, ${controller.name}",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      "hello".tr,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      ", ${controller.name}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -59,22 +71,22 @@ class MultiScreen extends StatelessWidget{
                 controller.changePage(index);
               },
               color: Colors.black,
-              tabs: const [
+              tabs: [
                 GButton(
                   icon: Icons.home_outlined,
-                  text: 'Home',
+                  text: 'home'.tr,
                 ),
                 GButton(
                   icon: Icons.favorite,
-                  text: 'Calories',
+                  text: 'favorite'.tr,
                 ),
                 GButton(
                   icon: Icons.person_outline_rounded,
-                  text: 'Profile',
+                  text: 'profile'.tr,
                 ),
                 GButton(
                   icon: Icons.settings_outlined,
-                  text: 'Settings',
+                  text: 'settings'.tr,
                 ),
       ],
       ),

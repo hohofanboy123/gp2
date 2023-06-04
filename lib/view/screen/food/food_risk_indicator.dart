@@ -14,20 +14,20 @@ class RiskIndicator extends StatelessWidget {
     return Obx(() =>Column(
       children: [
         Text(
-          controller.percent.value == 1.0 ? "Based on your allergies & illnesses this food is considered high risk" 
-        : controller.percent.value == 0.66 ? "Based on your allergies & illnesses this food is considered medium risk" 
-        : controller.percent.value == 0.33 ? "Based on your allergies & illnesses this food is considered low risk"
-        : "Based on your allergies & illnesses this food is considered no risk",
-        style: TextStyle(fontWeight: FontWeight.bold),
+          controller.percent.value == 1.0 ? "highRisk" .tr
+        : controller.percent.value == 0.66 ? "medRisk".tr 
+        : controller.percent.value == 0.33 ? "lowRisk".tr
+        : "noRisk".tr,
+        style: const TextStyle(fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FaIcon(FontAwesomeIcons.triangleExclamation, size: 15,),
+            const FaIcon(FontAwesomeIcons.triangleExclamation, size: 15,),
             LinearPercentIndicator(
-              barRadius: Radius.circular(30),
-                                  padding: EdgeInsets.symmetric(horizontal: 0),
+              barRadius: const Radius.circular(30),
+                                  padding: const EdgeInsets.symmetric(horizontal: 0),
                                   animation: true,
                                   width: Get.width / 2,
                                   progressColor: 

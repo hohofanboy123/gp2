@@ -37,8 +37,8 @@ late StatusRequest statusRequest;
 @override
   void onInit() {
     id = services.sharedPreferences.getInt("id");
-    resetDailyInfo();
     getDailyInfo();
+    resetDailyInfo();
     getFoodData();
     Get.previousRoute == "/bowl/bowl_view.dart" ? emptyBowl() : null;
     super.onInit();
@@ -80,7 +80,6 @@ getFoodData() async {
         }
         else
         {
-          Get.defaultDialog(title: "OOPS", middleText: "INCORRECT EMAIL OR PASSWORD");
           statusRequest = StatusRequest.taskFailure;
         }
       }

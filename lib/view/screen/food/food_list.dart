@@ -1,15 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fexercise/controller/food_controller.dart';
 import 'package:fexercise/data/model/food_model.dart';
-import 'package:fexercise/essential/constants/global_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
-import '../../../controller/categories_controller.dart';
-import '../../../data/model/categories_model.dart';
+import '../../../essential/functions/db_translation.dart';
 import '../../../link_api.dart';
 import 'nutrients.dart';
 
@@ -19,10 +15,10 @@ class FoodList extends GetView<FoodControllerImp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
       height: Get.height,
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
           //separatorBuilder: (context, index) => const SizedBox(width: 10),
           itemCount: controller.food.length,
           scrollDirection: Axis.vertical,
@@ -47,8 +43,8 @@ class Foods extends GetView<FoodControllerImp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       height: 140,
       decoration: BoxDecoration(
         border: Border.all(
@@ -67,7 +63,7 @@ class Foods extends GetView<FoodControllerImp> {
                               fit: BoxFit.scaleDown,
                               ),
                    ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
               Flexible(
                 fit: FlexFit.loose,
                 child: Column(
@@ -75,14 +71,15 @@ class Foods extends GetView<FoodControllerImp> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                       Text(
-                          "${foodModel.foodNameEn}",
+                          "${translateDB(foodModel.foodNameEn, foodModel.foodNameAr)}",
                           //textAlign: TextAlign.center,
                           style: const TextStyle(fontSize: 15),
                       ),
                     Row(
                       children: [
-                        FaIcon(FontAwesomeIcons.fire, color: Colors.red,size: 15,),
-                        Text(" ${(foodModel.kcal!*100).toStringAsFixed(0)} Kcal ⋅ 100g"),
+                        const FaIcon(FontAwesomeIcons.fire, color: Colors.red,size: 15,),
+                        Text(" ${(foodModel.kcal!*100).toStringAsFixed(0)}"),
+                        Text("kcal".tr),
                       ],
                     ),
                     Row(
@@ -91,19 +88,19 @@ class Foods extends GetView<FoodControllerImp> {
                         Nutrients(
                           color: Colors.green,
                           amount: "${((foodModel.carbs!)*100).toStringAsFixed(1)}g",
-                          title: "Carbs",
+                          title: "carbs".tr,
                           percent: (foodModel.carbs!) > 1 ? 1 : (foodModel.carbs!)*100/100,
                         ),
                         Nutrients(
                           color: Colors.red,
                           amount: "${((foodModel.fats!)*100).toStringAsFixed(1)}g",
-                          title: "Fats",
+                          title: "fats".tr,
                           percent: (foodModel.fats!) > 1 ? 1 : (foodModel.fats!)*100/100,
                         ),
                         Nutrients(
                           color: Colors.orange,
                           amount: "${((foodModel.protein!)*100).toStringAsFixed(1)}g",
-                          title: "Protein",
+                          title: "protein".tr,
                           percent: (foodModel.protein!) > 1 ? 1 : (foodModel.protein!)*100/100,
                         ),
                       ],

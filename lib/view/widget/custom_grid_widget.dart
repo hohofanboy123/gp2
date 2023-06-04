@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fexercise/data/model/muscle_model.dart';
 import 'package:fexercise/essential/constants/global_constants.dart';
+import 'package:fexercise/essential/functions/db_translation.dart';
 import 'package:flutter/material.dart';
 
 import '../../link_api.dart';
@@ -28,7 +29,7 @@ class CustomGridView extends StatelessWidget {
                                                 width: 150,
                                               ),
 
-                            Text(muscleModel.muscleNameEn!,
+                            Text(translateDB(muscleModel.muscleNameEn!, muscleModel.muscleNameAr!),
                               style: const TextStyle(fontSize: 15),
                             ),
                       ],

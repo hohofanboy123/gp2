@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +22,7 @@ class GenderPicker extends StatelessWidget {
             onTap: () => controller.genderSelection(val),
             child: Obx(
                 () => Container(
-                  margin: EdgeInsets.symmetric(vertical: 7.5),
+                  margin: const EdgeInsets.symmetric(vertical: 7.5),
                   height: 190,
                   width: 180,
                   decoration: BoxDecoration(
@@ -42,11 +40,11 @@ class GenderPicker extends StatelessWidget {
                       Text(
                           gender,
                           style: controller.isMaleSelected.value == val
-                              ? TextStyle(
+                              ? const TextStyle(
                                   fontSize: 18,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500)
-                              : TextStyle(
+                              : const TextStyle(
                                   fontSize: 18,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w500),

@@ -1,6 +1,6 @@
 import 'package:fexercise/view/screen/calories/gender_picker.dart';
+import 'package:fexercise/view/screen/welcome_widgets/custom_button.dart';
 import 'package:fexercise/view/widget/allergy_illness_select.dart';
-import 'package:fexercise/view/widget/calories_nutrients_progress.dart';
 import 'package:fexercise/view/widget/divider.dart';
 import 'package:fexercise/view/widget/goal_container.dart';
 import 'package:flutter/material.dart';
@@ -20,44 +20,44 @@ class BodyAnthropometry extends StatelessWidget {
     return Scaffold(
       body: Container(
         height: Get.height,
-        margin: EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15),
         child: Obx(
                   () => SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Column(
                             children: [
-                              SizedBox(height: 50,),
-                              const CustomDivider(text: "Your goal"),
-                              const Row( 
+                              const SizedBox(height: 50,),
+                              CustomDivider(text: "goal".tr),
+                              Row( 
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children : [
                                   GoalContainer(
-                                    text: "Gain Weight",
+                                    text: "gain".tr,
                                     index: 1,
                                   ),
                                   GoalContainer(
-                                    text: "Maintain Weight",
+                                    text: "maintain".tr,
                                     index: 2,
                                   ),
                                   GoalContainer(
-                                    text: "Lose Weight",
+                                    text: "lose".tr,
                                     index: 3,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 20,),
-                              const CustomDivider(text: "Body Anthropometry"),
-                              const Row(
+                              const SizedBox(height: 20,),
+                              CustomDivider(text: "anthropometry".tr),
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   GenderPicker(
-                    icon: FaIcon(FontAwesomeIcons.mars, color: Colors.blue, size: 60,),
-                    gender: "Male",
+                    icon: const FaIcon(FontAwesomeIcons.mars, color: Colors.blue, size: 60,),
+                    gender: "male".tr,
                     val: true,
                                   ),
                                   GenderPicker(
-                    icon: FaIcon(FontAwesomeIcons.venus, color: Colors.pink, size: 60,),
-                    gender: "Female",
+                    icon: const FaIcon(FontAwesomeIcons.venus, color: Colors.pink, size: 60,),
+                    gender: "female".tr,
                     val: false,
                                   ),
                                 ],
@@ -72,8 +72,8 @@ class BodyAnthropometry extends StatelessWidget {
                                 ),
                                 child: Column(
                                   children: [
-                    const Text(
-                          "Height (in cm)",
+                    Text(
+                          "height".tr,
                         ),
                     NumberPicker(
                     minValue: 120,
@@ -108,7 +108,7 @@ class BodyAnthropometry extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.symmetric(vertical: 7.5),
+                                    margin: const EdgeInsets.symmetric(vertical: 7.5),
                     height: 190,
                     width: 180,
                     decoration: BoxDecoration(
@@ -118,8 +118,8 @@ class BodyAnthropometry extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Text(
-                      "Weight (in kg)",
+                      Text(
+                      "weight".tr,
                     ),
                     Container(
                       height: 80,
@@ -179,9 +179,9 @@ class BodyAnthropometry extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const Text(
-                            'Age',
-                            style: TextStyle(fontSize: 16),
+                          Text(
+                            'age'.tr,
+                            style: const TextStyle(fontSize: 16),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -204,7 +204,7 @@ class BodyAnthropometry extends StatelessWidget {
                                 ),
                               Text(
                                   '${controller.age.value}',
-                                  style: TextStyle(fontSize: 25),
+                                  style: const TextStyle(fontSize: 25),
                                 ),
                                 Container(
                                   height: 50,
@@ -230,61 +230,62 @@ class BodyAnthropometry extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(height: 20,),
-                              const CustomDivider(text: "Daily activity level"),
-                              const ActivityContainer(
-                                text: "Sedentary (little to no exercise)",
+                              CustomDivider(text: "activity".tr),
+                              ActivityContainer(
+                                text: "sedentary".tr,
                                 index: 1,
                               ),
-                              const ActivityContainer(
-                                text: "Lightly active (light exercise or sports 1-3 days a week)",
+                              ActivityContainer(
+                                text: "lightly".tr,
                                 index: 2,
                               ),
-                              const ActivityContainer(
-                                text: "Moderately active (moderate exercise orsports 3-5 days a week)",
+                              ActivityContainer(
+                                text: "moderately".tr,
                                 index: 3,
                               ),
-                              const ActivityContainer(
-                                text: "Very active (hard exercise or sp67orts 6-7 days a week)",
+                              ActivityContainer(
+                                text: "very".tr,
                                 index: 4,
                               ),
-                              const ActivityContainer(
-                                text: "Extra active (very hard exercise or a physically demanding job)",
+                              ActivityContainer(
+                                text: "extra".tr,
                                 index: 5,
                               ),
-                              SizedBox(height: 20,),
-                              CustomDivider(text: "Allergy & Illness"),
-                              const Wrap(
+                              const SizedBox(height: 20,),
+                              CustomDivider(text: "allergyIllness".tr),
+                              Wrap(
                                 alignment: WrapAlignment.center,
                                 spacing: 20,
                                 children : [
                               AllergyContainer(
-                                text: "Type 2 Diabetes",
+                                text: "diabetes".tr,
                                 index: 1,
                               ),
                               AllergyContainer(
-                                text: "Hypertension",
+                                text: "hypertension".tr,
                                 index: 2,
                               ),
                               AllergyContainer(
-                                text: "Celiac Disease",
+                                text: "celiac".tr,
                                 index: 3,
                               ),
                               AllergyContainer(
-                                text: "Wheat Allergy",
+                                text: "wheat".tr,
                                 index: 4,
                               ),
                               AllergyContainer(
-                                text: "Milk Allergy",
+                                text: "milk".tr,
                                 index: 5,
                               ),
                                 ],
                               ),
-                              ElevatedButton(
-                                onPressed: () {
+                              CustomButton(
+                                text: "tdee".tr,
+                                press: (){
                                   controller.updateData();
-                                },
-                                 child: Text('Get Weight and Height'),
-),
+                                }
+                              ),
+                              const SizedBox(height: 20,)
                             ],
                           ),
                   ),

@@ -17,7 +17,7 @@ class ExerciseDetails extends StatelessWidget {
                   widget:
             Scaffold(
               appBar: AppBar(
-        title: Text("12".tr),
+        //title: Text("12".tr),
         backgroundColor: Colors.white,
         elevation: 0.0,
         iconTheme: const IconThemeData(color: Colors.black),

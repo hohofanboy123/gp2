@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../essential/constants/global_constants.dart';
+import '../../../essential/functions/db_translation.dart';
 import '../../widget/youtube_container.dart';
 
 class ExerciseDetail extends GetView<ExerciseDetailsControllerImp> {
@@ -37,18 +38,18 @@ class DetailExercise extends GetView<ExerciseDetailsControllerImp> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> steps = exerciseDetailModel.exerciseDescription!.split('\n\n');
+    List<String> steps = translateDB(exerciseDetailModel.exerciseDescription!.split('\n\n'), exerciseDetailModel.exerciseDescriptionAr!.split('\n\n'));
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       elevation: 5,
       shadowColor: blue1,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
                 children: [
                   Text(
-                    "${exerciseDetailModel.exerciseNameEn}",
+                    "${translateDB(exerciseDetailModel.exerciseNameEn, exerciseDetailModel.exerciseNameAr)}",
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 20),
                   ),
@@ -61,7 +62,7 @@ class DetailExercise extends GetView<ExerciseDetailsControllerImp> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text("Difficulty", style: TextStyle(fontSize: 15),),
+                        Text("diff".tr, style: const TextStyle(fontSize: 15),),
                           SizedBox(
                             width: 100,
                             child: LinearProgressIndicator(

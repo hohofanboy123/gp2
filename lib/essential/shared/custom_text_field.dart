@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 //General text field
@@ -150,7 +149,6 @@ class CustomPasswordTextField extends StatelessWidget{
 
 //email custom textfield
 class SearchCustomTextField extends StatelessWidget{
-  final String labelTxt;
   final String hintTxt;
   final TextEditingController? cont;
   final void Function(String)? onChanged;
@@ -158,7 +156,6 @@ class SearchCustomTextField extends StatelessWidget{
 
   const SearchCustomTextField({
     super.key,
-    required this.labelTxt,
     required this.hintTxt,
     this.cont,
     this.onChanged,
@@ -177,9 +174,8 @@ class SearchCustomTextField extends StatelessWidget{
                 ),
                 prefixIcon: IconButton(
                   onPressed: onPressed,
-                  icon: Icon(Icons.search)
+                  icon: const Icon(Icons.search)
                 ),
-                labelText: labelTxt,
                 hintText: hintTxt,
                 hintStyle: const TextStyle(
                   fontSize: 12,

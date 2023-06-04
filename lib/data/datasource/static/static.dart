@@ -6,26 +6,26 @@ import '../../../essential/constants/image_use.dart';
 List<WelcomeModel> welcomeModelList = [
 
   WelcomeModel(
-    title: "4".tr,
+    title: "welcome".tr,
     image: ImageUse.welcomeImageOne,
-    body: "5".tr,
+    body: "buildlifestyle".tr,
   ),
 
   WelcomeModel(
-    title: "6".tr,
+    title: "trackFood".tr,
     image: ImageUse.welcomeImageTwo,
-    body: "7".tr,
+    body: "trackFoodDesc".tr,
   ),
 
   WelcomeModel(
-    title: "8".tr,
+    title: "workoutAnywhere".tr,
     image: ImageUse.welcomeImageThree,
-    body: "9".tr,
+    body: "workoutAnywhereDesc".tr,
   ),
 
   WelcomeModel(
-    title: "10".tr,
+    title: "shareExp".tr,
     image: ImageUse.welcomeImageFour,
-    body: "11".tr,
+    body: "shareExpDesc".tr,
   ),
 ];

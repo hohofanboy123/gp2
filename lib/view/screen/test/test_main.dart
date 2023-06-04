@@ -19,14 +19,14 @@ class FeedPage extends StatelessWidget {
                 widget:Scaffold(
                   resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('Feed Page'),
+        title: const Text('Feed Page'),
       ),
       body:  Column(
         children: [
           Row(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15 ,vertical: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 15 ,vertical: 10),
                 width: Get.width / 1.3,
                 child: TextField(
                   controller: controller.postContent,
@@ -44,11 +44,11 @@ class FeedPage extends StatelessWidget {
                 onPressed: (){
                   controller.postAPost();
                 },
-                icon: FaIcon(FontAwesomeIcons.arrowRight)
+                icon: const FaIcon(FontAwesomeIcons.arrowRight)
               ),
             ],
           ),
-          PostList(),
+          const PostList(),
         ],
       )),
     ));

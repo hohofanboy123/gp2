@@ -31,7 +31,6 @@ class DailyInfoData {
 
   resetDailyInfo(String id, DateTime date) async {
     var formattedDate = '${date.day}';
-    print(formattedDate);
     var response = await crud.postData(ApiLinks.resetDailyInfo, {
       "id": id,
       "date": formattedDate

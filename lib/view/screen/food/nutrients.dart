@@ -17,8 +17,8 @@ class Nutrients extends StatelessWidget {
         RotatedBox(
       quarterTurns: -1,
       child: LinearPercentIndicator(
-        padding: EdgeInsets.symmetric(horizontal: 0),
-        barRadius: Radius.circular(30),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
+        barRadius: const Radius.circular(30),
         lineHeight: 8.0,
         width: 30,
         percent: percent,

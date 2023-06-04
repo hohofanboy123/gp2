@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:fexercise/essential/constants/route_name.dart';
 import 'package:fexercise/view/screen/home.dart';
@@ -13,6 +12,7 @@ abstract class MultiScreenController extends GetxController{
   goToExercise();
   goToFoodList();
   goToCalories();
+  goToFeed();
 
 }
 
@@ -28,17 +28,17 @@ class MultiScreenControllerImp extends MultiScreenController{
 
   List<Widget> listPage = [
     const Home(),
-    Column(
+    const Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children : const [Center(child: Text("FAVORITS"),)]
+      children : [Center(child: Text("FAVORITS"),)]
     ),
-    Column(
+    const Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children : const [Center(child: Text("PROFILE"),)]
+      children : [Center(child: Text("PROFILE"),)]
     ),
-    Column(
+    const Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children : const [Center(child: Text("SETTINGS"),)]
+      children : [Center(child: Text("SETTINGS"),)]
     ),
   ];
 
@@ -55,12 +55,17 @@ class MultiScreenControllerImp extends MultiScreenController{
   
   @override
   goToFoodList() {
-    Get.toNamed(AppRoute.foodList);
+    gender == "null" ? Get.toNamed(AppRoute.bodyAnthropometry) : Get.toNamed(AppRoute.foodList);
   }
 
   @override
   goToCalories() {
-    gender == "null" ? Get.toNamed(AppRoute.bodyAnthropometry) : Get.toNamed(AppRoute.foodList);
+    gender == "null" ? Get.toNamed(AppRoute.bodyAnthropometry) : Get.toNamed(AppRoute.dailyInfo);
+  }
+
+  @override
+  goToFeed() {
+    Get.toNamed(AppRoute.feed);
   }
 
   @override
@@ -69,6 +74,8 @@ class MultiScreenControllerImp extends MultiScreenController{
     gender = services.sharedPreferences.getString("gender");
     super.onInit();
   }
+  
+  
   
 
 

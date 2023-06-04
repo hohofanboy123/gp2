@@ -15,4 +15,13 @@ class SignInData{
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  googleSignIn(String fname, String lname, String email) async{
+    var response = await crud.postData(ApiLinks.googleSignIn, {
+      "fname" : fname,
+      "lname" : lname,
+      "email" : email,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }
