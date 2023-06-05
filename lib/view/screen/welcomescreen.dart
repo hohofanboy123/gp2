@@ -30,7 +30,9 @@ class WelcomeScreen extends StatelessWidget{
                   SizedBox(height: Get.height * (20 / 375.0)),
                   RaisedGradientButton(
                     gradient: gradientColor,
-                    onPressed: (){},
+                    press: (){
+                      controller.goToSignIn();
+                    },
                     child: Text("SignIn".tr, style: TextStyle(
             fontSize: Get.width * (20 / 375.0),//SizeConfig.scrnWidth! * (25 / 375.0),
             color: Colors.white,
@@ -39,7 +41,9 @@ class WelcomeScreen extends StatelessWidget{
                   SizedBox(height: Get.height * (5 / 375.0)),
                   RaisedGradientButton(
                     gradient: gradientColor,
-                    onPressed: (){},
+                    press: (){
+                      controller.goToSignUp();
+                    },
                     child: Text("SignUp".tr, style: TextStyle(
             fontSize: Get.width * (20 / 375.0),//SizeConfig.scrnWidth! * (25 / 375.0),
             color: Colors.white,

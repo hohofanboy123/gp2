@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 class RaisedGradientButton extends StatelessWidget {
   final Widget child;
   final RadialGradient gradient;
-  final Function onPressed;
+  final VoidCallback press;
 
-  const RaisedGradientButton({super.key, required this.child, required this.gradient, required this.onPressed});
+  const RaisedGradientButton({super.key, required this.child, required this.gradient, required this.press});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,11 @@ class RaisedGradientButton extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          onTap: press,
             child: Center(
               child: child,
-            )),
+            )
+            ),
       ),
     );
   }

@@ -60,6 +60,7 @@ class MultiScreenControllerImp extends MultiScreenController{
 
   @override
   goToCalories() {
+    print(gender);
     gender == "null" ? Get.toNamed(AppRoute.bodyAnthropometry) : Get.toNamed(AppRoute.dailyInfo);
   }
 
@@ -72,8 +73,10 @@ class MultiScreenControllerImp extends MultiScreenController{
   void onInit() {
     name = services.sharedPreferences.getString("fname");
     gender = services.sharedPreferences.getString("gender");
+    print(gender);
     super.onInit();
   }
+
   
   
   

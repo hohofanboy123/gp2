@@ -47,7 +47,7 @@ class FoodView extends StatelessWidget {
   }
 }
 
-class FoodSearch extends StatelessWidget {
+class FoodSearch extends GetView<FoodControllerImp> {
   final List<FoodModel> searchFood;
   
   const FoodSearch({super.key, required this.searchFood});
@@ -59,7 +59,12 @@ class FoodSearch extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context , index){
-        return Text("${searchFood[index].foodNameEn}");
+        return InkWell(
+          onTap: () {
+            controller.goToFoodDetail(searchFood[index]);
+          },
+          child: Text("${searchFood[index].foodNameEn}")
+          );
       }
     );
   }

@@ -48,8 +48,8 @@ class HomeContainer extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     image,
-                    width: Get.width * (130 / 375.0),
-                    height: Get.height * (130 / 812.0),
+                    width: Get.width * (120 / 375.0),
+                    height: Get.height * (120 / 812.0),
                   ),
                   const SizedBox(width: 5),
                   Column(

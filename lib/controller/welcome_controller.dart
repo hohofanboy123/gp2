@@ -25,14 +25,14 @@ class WelcomeControllerImp extends WelcomeController {
 
   @override
   goToSignIn() {
-    Get.offAllNamed(AppRoute.signIn);
     services.sharedPreferences.setString("check", "1");
+    Get.offAllNamed(AppRoute.signIn);
   }
   
   @override
   goToSignUp() {
-    Get.offAllNamed(AppRoute.signUp);
     services.sharedPreferences.setString("check", "1");
+    Get.offAllNamed(AppRoute.signUp);
   }
 
 }

@@ -21,7 +21,7 @@ import 'package:fexercise/view/screen/welcomescreen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/",                            page: () => const MultiScreen(),),
+  GetPage(name: "/",                            page: () => const FoodView(),),
   //GetPage(name: "/",                            page: () => const Language(),),//middlewares: [MiddleWare()],
   GetPage(name: AppRoute.welcome,               page: () => const WelcomeScreen(),),
   GetPage(name: AppRoute.signIn,                page: () => const SignIn()),

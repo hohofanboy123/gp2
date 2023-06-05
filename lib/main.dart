@@ -11,6 +11,7 @@ import 'essential/localization/translate.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(const Duration(milliseconds: 300));
   await initialServices();
   runApp(const MyApp());
 }
